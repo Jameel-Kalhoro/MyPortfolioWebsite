@@ -119,29 +119,73 @@ body {
     width: 25px;
 }
 
-/* Hero Section */
+/* General styles */
+.home-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+  text-align: center;
+}
+
 .hero-section {
-    text-align: center;
-    margin: 50px auto;
-    background-color: black; /* Contrast background */
-    padding: 20px;
-  }
+  position: relative;
+  transform-style: preserve-3d; /* Enable 3D for child elements */
+}
+
+.gif-text {
+  font-size: 64px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  perspective: 500px; /* Adds depth */
+  filter: drop-shadow(1px 10px 15px rgba(0, 140, 255));
+}
+
+.gif-text span {
+  padding: 5px;
+  display: inline-block;
+  transform-origin: 0 0 150px; /* Set orbit radius for each character */
+  animation: orbitCharacter 3s infinite linear;
   
-  /* Responsive GIF Text */
-  .gif-text {
-    font-size: 5rem; /* Default size for large screens */
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-    color: transparent;
-    background: url('/images/bgImage.jpeg') no-repeat center center;
-    background-size: cover;
-    -webkit-background-clip: text;
-    background-clip: text;
-    box-shadow: 0 0 5px #008cff, 0 0 20px #008cff, 0 0 50px #008cff, 0 0 100px #008cff;
-    border-radius: 10px;
-    margin-bottom: 20px;
+}
+
+/* Add a delay for each character to stagger the effect */
+.gif-text span:nth-child(1) {
+  animation-delay: 0s;
+}
+.gif-text span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.gif-text span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.gif-text span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.gif-text span:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.gif-text span:nth-child(6) {
+  animation-delay: 1s;
+}
+
+/* Keyframes for 3D carousel orbit */
+@keyframes orbitCharacter {
+  0% {
+    transform: rotateY(0deg);
   }
+  50%{
+    transform: rotateY(-50deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
   
   .gif-text span {
     display: block;
@@ -160,7 +204,7 @@ body {
   @media (max-width: 1024px) {
     .gif-text {
       font-size: 4rem; /* Slightly smaller on tablets and medium screens */
-      box-shadow: 0 0 5px #008cff, 0 0 15px #008cff, 0 0 30px #008cff, 0 0 60px #008cff;
+      filter: drop-shadow(1px 10px 15px rgba(0, 140, 255));    
     }
   
     p {
@@ -171,7 +215,7 @@ body {
   @media (max-width: 768px) {
     .gif-text {
       font-size: 3rem; /* Reduce size for smaller screens */
-      box-shadow: 0 0 5px #008cff, 0 0 10px #008cff, 0 0 20px #008cff, 0 0 40px #008cff;
+      filter: drop-shadow(1px 10px 15px rgba(0, 140, 255));
     }
   
     p {
@@ -182,7 +226,7 @@ body {
   @media (max-width: 480px) {
     .gif-text {
       font-size: 2.5rem; /* Compact font size for mobile devices */
-      box-shadow: 0 0 3px #008cff, 0 0 8px #008cff, 0 0 15px #008cff, 0 0 30px #008cff;
+      filter: drop-shadow(1px 10px 15px rgba(0, 140, 255));
     }
   
     p {
